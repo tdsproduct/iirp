@@ -1,0 +1,94 @@
+<!-- begin import component -->
+<div id="import-component">
+    <form [formGroup]="importForm" (ngSubmit)="onSubmit()" class="form-horizontal" >
+        <!-- begin row -->
+        <div class="row">
+            <!-- begin col-6 Object Import -->
+            <div class="col-md-6">
+                <!-- begin panel -->
+                <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                    <div class="panel-heading">
+                        <div class="panel-heading-btn">
+                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                        </div>
+                        <h4 class="panel-title">Data Source</h4>
+                    </div>
+                    <div class="panel-body">
+                            <div class="panel-body">
+                                    <div class="col-md-9">
+                                        <div class="radio">
+                                                <label>
+                                                        <input type="radio" value="text"  formControlName="importOption"/> Copy/Paste into text area
+                                                </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                            <input type="radio" value="excel" formControlName="importOption"/> IOT Excel Format <a href="{{IOTExcelTemplate}}">(Download Template)</a>
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                                <label>
+                                                        <input type="radio" value="csv"  formControlName="importOption"/> CSV or tab-delimited file
+                                                </label>
+                                        </div>
+
+                                        <div class="radio">
+                                                <label>
+                                                        <input type="radio" value="service"  formControlName="importOption"/> Connect to a service
+                                                </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">&nbsp;</div>
+                                        <div class="col-md-12" *ngIf="importForm.value.importOption=='text'">
+
+                                            <textarea class="form-control" placeholder="Paste text here to import" rows="15" formControlName="textImport" ></textarea>
+
+                                            <div class="col-md-9">&nbsp;
+                                            </div>
+                                            <div class="col-md-9">&nbsp;</div>
+                                            <div class="pull-right">
+                                                <button (click)="uploadText()" type="button" class="btn btn-danger m-r-5 m-b-5">Import Text</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" *ngIf="importForm.value.importOption=='service'">
+                                            <input class="form-control" placeholder="Enter Service URL to import" rows="15" formControlName="serviceImport"/>
+                                            <div class="col-md-9">&nbsp;
+                                            </div>
+                                            <div class="col-md-9">&nbsp;</div>
+                                            <div class="pull-right">
+                                                <button (click)="uploadText()" type="button" class="btn btn-danger m-r-5 m-b-5">Connect to Import</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" *ngIf="importForm.value.importOption=='excel' || importForm.value.importOption=='csv'">
+                                            <div class="well">
+                                                <form action="/fileUpload" class="dropzone" dropzone="" id="dropzone">
+                                                    <div class="dz-default dz-message">
+                                                        <div>&nbsp;</div>
+                                                        <input type="file" name="file">
+                                                        <div>&nbsp;</div>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        <div>&nbsp;
+                                        </div>
+                                        <div class="pull-right">
+                                            <button (click)="cancelFileUpload()" type="button" class="btn btn-default m-r-5 m-b-5">Cancel</button>
+                                            <button (click)="uploadFile()" type="button" class="btn btn-danger m-r-5 m-b-5">Upload</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">&nbsp;</div>
+                            </div>
+                    </div>
+                </div>
+                <!-- end panel -->
+            </div>
+            <!-- end col-6 -->
+        </div>
+        <!-- end row -->
+
+    </form>
+</div>   
+<!-- end import component -->

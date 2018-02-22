@@ -1,0 +1,70 @@
+<div id="login">
+<div class="login-cover">
+    <div class="login-cover-image"><img src="/assets/img/d4dt-logo.png" data-id="login-cover-image" alt="" /></div>
+    <div class="login-cover-bg"></div>
+</div>
+
+
+<!--<form class="form-horizontal" [formGroup]="signinForm">-->
+    <!-- begin login -->
+    
+    <div class="login login-v2" data-pageload-addclass="animated fadeIn">
+        <!-- begin brand -->
+        <!--
+        <div class="login-header">
+            <div class="brand">
+                <span class="logo"></span> Color Admin
+                <small>responsive bootstrap 3 admin template</small>
+            </div>
+            <div class="icon">
+                <i class="fa fa-sign-in"></i>
+            </div>
+        </div>
+        -->
+        <!-- end brand -->
+
+        <div class="login-content">
+            <!--
+            <div class="form-group m-b-20">
+                <div [ngClass]="{
+                    'has-error':!signinForm.controls['emailAddress'].valid && signinForm.controls['emailAddress'].touched,
+                    'has-success':signinForm.controls['emailAddress'].valid && signinForm.controls['emailAddress'].touched}">
+
+                    <input formControlName="emailAddress" type="email" class="form-control input-lg" name="emailAddress" placeholder="Email Address" [formControl]="signinForm.controls['emailAddress']" pattern="[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$" />
+                    <p *ngIf="(!signinForm.controls['emailAddress'].pristine && !signinForm.controls['emailAddress'].valid) && signinForm.controls['emailAddress'].touched" class="help-block">Please enter a valid email address</p>
+                    <p *ngIf="displayEmailNotFound" class="help-block has-error">Invalid email account. This email is not a registered account</p>
+                </div>
+
+            </div>
+            <div class="form-group m-b-20">
+                <input formControlName="password" type="password" class="form-control input-lg" placeholder="Password" required />
+            </div>
+            <div class="checkbox m-b-20">
+                <label>
+                    <input formControlName="rememberMe" type="checkbox" /> Remember Me
+                </label>
+            </div>-->
+
+            <div class="form-group m-b-20">
+                <div class="login-buttons">
+                    <button *ngIf="!authService.isAuthenticated()" (click)="authService.login()" type="submit" class="btn btn-danger btn-block btn-lg">Login</button>
+
+                    <button *ngIf="authService.isAuthenticated()" (click)="authService.logout()" type="submit" class="btn btn-danger btn-block btn-lg">Logout</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <!-- end login -->
+
+<!--</form>-->
+
+</div>
+<!--
+
+<p>Form value: {{ signinForm.value | json }}</p>
+
+-->
+
+
+

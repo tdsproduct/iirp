@@ -1,0 +1,78 @@
+<!-- begin #header -->
+<div id="header" class="header navbar navbar-default navbar-fixed-top">
+    <!-- begin container-fluid -->
+    <div class="container-fluid">
+        <!-- begin mobile sidebar expand / collapse button -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-click="sidebar-toggled" [ngClass]="{'pull-left':page_with_two_sidebar}">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <button *ngIf="this.page_with_two_sidebar" type="button" class="navbar-toggle pull-right" data-click="right-sidebar-toggled">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a routerLink="/" class="navbar-brand"><img src="{{company_logo_path}}" alt="" /></a>
+            <button *ngIf="this.page_with_mega_menu" type="button" class="navbar-toggle p-0 m-r-5" data-toggle="collapse" data-target="#top-navbar">
+                <span class="fa-stack fa-lg text-inverse">
+                    <i class="fa fa-square-o fa-stack-2x m-t-2"></i>
+                    <i class="fa fa-cog fa-stack-1x"></i>
+                </span>
+            </button>
+        </div>
+        <!-- end mobile sidebar expand / collapse button -->
+        
+        <mega-menu *ngIf="page_with_mega_menu"></mega-menu>
+
+        <!-- begin header navigation right -->
+        <ul class="nav navbar-nav navbar-left" >
+            <li class="navbar-form" style="font-size: 22px;">
+                IIRP<sup><small>&trade;</small></sup> <!-- &reg; -->
+            </li>
+        </ul>
+        <!-- end header navigation right -->
+
+        <!-- begin header navigation right -->
+        <ul class="nav navbar-nav navbar-right">
+
+            <li>
+                <form class="navbar-form full-width">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Enter keyword" />
+                        <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
+                    <i class="fa fa-bell-o"></i>
+                    <span class="label">5</span>
+                </a>
+                
+            </li>
+            <li class="dropdown navbar-user">
+             <!--   <form class="navbar-form full-width" [formGroup]="userHeaderForm">-->
+               <div class="form-group">     
+               <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                    <button *ngIf="!authService.isAuthenticated()" (click)="authService.login()" class="btn btn-link m-b-5 f-s-11">Log In</button>
+                    <img  *ngIf="currentProfile.picture" [src]="currentProfile.picture" alt="" /> 
+                    <span  *ngIf="authService.isAuthenticated()" class="hidden-xs">{{currentUser.full_name}}</span> <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu animated fadeInLeft" *ngIf="authService.isAuthenticated()">
+                    <li class="arrow"></li>
+                    <li><button (click)="loadUserDetailsPage(currentUser.id)" type="button" class="btn btn-link m-b-5 f-s-11" >Edit Profile</button></li>
+                    <li hidden><a href="javascript:;">Setting</a></li>
+                    <li class="divider"></li>
+                    <li><button  (click)="authService.logout()" class="btn btn-link m-b-5 f-s-11">Log Out</button></li>
+                </ul>
+            </div>
+         <!--   </form> -->
+            </li>
+        </ul>
+        <!-- end header navigation right -->
+    </div>
+    <!-- end container-fluid -->
+</div>
+<!-- end #header -->

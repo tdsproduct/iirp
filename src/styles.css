@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+h1 {
+  color: #000;
+}
+
+.float-divs-diff-heights:nth-child(2n+1) {
+    float: left;
+    margin: auto;
+}
+
+.float-divs-diff-heights:nth-child(2n) {
+    float: right;
+    margin: auto;
+}
+
+.nofloat-divs-stretched  {
+  height: auto;
+}
+
+.panel-footer-duplicate {
+    background: #fff;
+    
+}
+
+.hide {
+    style: "display: none;"
+}

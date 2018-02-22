@@ -1,0 +1,145 @@
+<!-- begin breadcrumb -->
+<ol class="breadcrumb pull-right">
+    <li><a href="javascript:;">Home</a></li>
+    <li class="active">Tenant Admin</li>
+</ol>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">{{currentUser.organization}}</h1>
+<!-- end page-header -->
+
+<!-- begin row -->
+<div class="row" *ngIf="authService.isAuthenticated()">
+    <!-- begin col-3 -->
+    <div class="col-md-3 col-sm-6">
+        <div class="widget widget-stats bg-blue">
+            <div class="stats-icon"><i class="fa fa-users"></i></div>
+            <div class="stats-info">
+                <h4>DEVICE TYPES</h4>
+                <p>{{ numberOfDeviceTypes }}</p>	
+            </div>
+            <div class="stats-link">
+                <a href="javascript:;">View List<i class="fa fa-arrow-circle-o-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <!-- end col-3 -->
+    <!-- begin col-3 -->
+    <div class="col-md-3 col-sm-6">
+        <div class="widget widget-stats bg-green">
+            <div class="stats-icon"><i class="fa fa-cubes"></i></div>
+            <div class="stats-info">
+                <h4>USE CASES</h4>
+                <p> {{ numberOfUseCases }}</p>	
+            </div>
+            <div class="stats-link">
+                <a href="javascript:;">View List <i class="fa fa-arrow-circle-o-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <!-- end col-3 -->
+    <!-- begin col-3 -->
+    <div class="col-md-3 col-sm-6">
+        <div class="widget widget-stats bg-orange">
+            <div class="stats-icon"><i class="fa fa-microchip"></i></div>
+            <div class="stats-info">
+                <h4>DEVICE MODELS</h4>
+                <p>{{ numberOfDeviceModels }}</p>	
+            </div>
+            <div class="stats-link">
+                <a href="javascript:;">View List <i class="fa fa-arrow-circle-o-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <!-- end col-3 -->
+    <!-- begin col-3 -->
+    <div class="col-md-3 col-sm-6">
+        <div class="widget widget-stats bg-red">
+            <div class="stats-icon"><i class="fa fa-tachometer"></i></div>
+            <div class="stats-info">
+                <h4>DAILY ACTIVE DEVICES</h4>
+                <p>{{ numberOfDevices }}</p>	
+            </div>
+            <div class="stats-link">
+                <a href="javascript:;">View List <i class="fa fa-arrow-circle-o-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <!-- end col-3 -->
+</div>
+<!-- end row -->
+<!-- begin row -->
+<div class="row" *ngIf="authService.isAuthenticated()">
+    <!-- begin col-4 -->
+    <div class="col-md-4">
+            <div class="panel panel-inverse" data-sortable-id="index-6">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h4 class="panel-title">Analytics Summary</h4>
+                </div>
+                <div class="panel-body p-t-0">
+                    <table class="table table-valign-middle m-b-0">
+                        <thead>
+                            <tr>	
+                                <th>Source</th>
+                                <th>Total</th>
+                                <th>Trend</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                        <td><label class="label label-primary">Device Types</label></td>
+                                        <td>{{ numberOfDeviceTypes }}</td>
+                                        <td><div id="sparkline-number-of-device-types"></div></td>
+                                    </tr>
+                            
+                            <tr>
+                                <td><label class="label label-success">Use Cases</label></td>
+                                <td>{{ numberOfUseCases}}</td>
+                                <td><div id="sparkline-number-of-usecases"></div></td>
+                            </tr>
+                            
+                            <tr>
+                                    <td><label class="label label-warning">Device Models</label></td>
+                                    <td>{{ numberOfDeviceModels }}</td>
+                                    <td><div id="sparkline-number-of-device-models"></div></td>
+                                </tr>
+                            <tr>
+                                    <td><label class="label label-danger">Total Daily Active Devices</label></td>
+                                    <td>{{ numberOfDevices }}<span class="text-success"><i class="fa fa-arrow-up"></i></span></td>
+                                    <td><div id="sparkline-total-daily-active-devices"></div></td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+        <!-- end col-4 -->
+    <!-- begin col-8 -->
+    <div class="col-md-8">
+        <div class="panel panel-inverse" data-sortable-id="index-1">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                </div>
+                <h4 class="panel-title">IIRP<sup>&trade;</sup> Platform Analytics</h4>
+            </div>
+            <div class="panel-body">
+                <div [chart]="chart"></div>
+            </div>
+        </div>
+
+    </div>
+    <!-- end col-8 -->
+    
+</div>
+<!-- end row -->

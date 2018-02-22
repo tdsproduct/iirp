@@ -1,0 +1,164 @@
+<!-- begin breadcrumb -->
+<ol class="breadcrumb pull-right">
+    <!-- 
+    <li><a href="javascript:;">Home</a></li>
+    <li><a href="javascript:;">Tenants</a></li>
+    <li class="active">Organization Detail</li>
+    --> <li><button (click)="loadEditOrganization()" *ngIf="isReadOnly"   type="button" class="btn btn-danger m-r-5 m-b-5" >Edit</button></li>
+    <li><button (click)="cancelEditOrganization()" *ngIf="!isReadOnly"  type="button" class="btn btn-default m-r-5 m-b-5" >Cancel</button></li>
+    <li><button (click)="saveEditOrganization()" *ngIf="!isReadOnly" type="button" class="btn btn-success m-r-5 m-b-5" >Save</button></li>
+    
+</ol>
+<!-- end breadcrumb -->
+
+<!-- begin page-header -->
+<h1 class="page-header">Organization Detail</h1>
+<!-- end page-header -->
+
+<!-- begin row -->
+<div class="row">
+    <!-- begin col-6 Organization Info -->
+    <div class="col-md-6">
+        <!-- begin panel -->
+        <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Organization Info</h4>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal"  [formGroup]="organizationDetailsForm">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Organization Name</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control"  formControlName="organizationName" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                            <label class="col-md-3 control-label">Domain Name</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" formControlName="organizationDomainName" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Industry</label>
+                            <div class="col-md-9">
+                                <select class="form-control" formControlName="organizationIndustry">
+                                    <option *ngFor="let industry of listOfIndustries" [value]="industry" >{{ industry }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" hidden>
+                            <label class="col-md-3 control-label">Use Cases</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control"  formControlName="organizationUseCases" />
+                            </div>
+                        </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Main Contact</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control"  formControlName="organizationMainContact" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Address Line 1</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" formControlName="organizationAddress1" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Address Line 2</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control"  formControlName="organizationAddress2" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">City or Town</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" formControlName="organizationCity" />
+                            <!-- 
+                            <select class="form-control" formControlName="addressCityOrTown" >
+                                <option *ngFor="let cityOrTown of citiesOrTowns" [value]="cityOrTown" >{{ cityOrTown }}</option>
+                            </select>
+                            -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">State or Province</label>
+                        <div class="col-md-9">
+                            <select class="form-control" formControlName="organizationState">
+                                <option *ngFor="let stateOrProvince of statesOrProvincesPerCountry" [value]="stateOrProvince.name" >{{ stateOrProvince.name }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Country</label>
+                        <div class="col-md-9">
+                            <select class="form-control" formControlName="organizationCountry">
+                                <option *ngFor="let country of countries" [value]="country.name" >{{ country.name }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Postal or Zip Code</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control"  formControlName="organizationPostalCode" />
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-6 -->
+
+    <!-- begin col-6 Organization Branding -->
+    <div class="col-md-6">
+        <!-- begin panel -->
+        <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Branding</h4>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal dropzone" dropzone=""  [formGroup]="organizationBrandingForm">
+                    <div class="form-group">
+                       <!-- <label class="col-md-3 control-label">Branding Logo</label>-->
+                        <div>&nbsp;</div>
+                        <div class="dz-default dz-message">
+                            <div>&nbsp;</div>
+                            <input type="file" name="file">
+                            <div>&nbsp;</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-6 -->
+</div>
+<!-- end row -->
+<!-- begin row `Edit` button -->
+<div class="row">
+    
+            <div class="col-md-12">
+                <ol class="breadcrumb pull-right">
+                        <li><button (click)="loadEditOrganization()" *ngIf="isReadOnly"   type="button" class="btn btn-danger m-r-5 m-b-5" >Edit</button></li>
+                        <li><button (click)="cancelEditOrganization()" *ngIf="!isReadOnly"  type="button" class="btn btn-default m-r-5 m-b-5" >Cancel</button></li>
+                        <li><button (click)="saveEditOrganization()" *ngIf="!isReadOnly" type="button" class="btn btn-success m-r-5 m-b-5" >Save</button></li>
+                </ol>
+            </div>
+        </div>
+    
+        <!-- end row `Edit` button -->
+
+

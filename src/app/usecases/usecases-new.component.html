@@ -1,0 +1,329 @@
+<!-- begin breadcrumb -->
+<ol class="breadcrumb pull-right">
+    <!--
+    <li><a href="javascript:;">Home</a></li>
+    <li><a href="javascript:;">Tenants</a></li>
+    <li class="active">New Tenant</li>
+    -->
+    <li><button (click)="cancelNewUsecase()" type="button" class="btn btn-default m-r-5 m-b-5">Cancel</button></li>
+    <li><button (click)="saveNewUsecase()" type="button" class="btn btn-danger m-r-5 m-b-5">Save</button></li>
+    <li>&nbsp;</li>
+    <li>&nbsp;</li>
+</ol>
+<!-- end breadcrumb -->
+
+<!-- begin page-header -->
+<h1 class="page-header">New Use Case</h1>
+<!-- end page-header -->
+
+<form class="form-horizontal" [formGroup]="usecaseNewForm">
+
+    <!-- begin row -->
+    <div class="row">
+        <!-- begin col-8 Status -->
+        <div class="float-divs-diff-heights col-md-8">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                    </div>
+                    <h4 class="panel-title">Status</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Status</label>
+                        <div class="col-md-9">
+                            <select class="form-control" formControlName="usecaseStatus" >
+                                <option *ngFor="let usecaseStatus of usecaseStatuses" [value]="usecaseStatus" >{{ usecaseStatus }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+
+        <!-- begin col-4 Use Case Collaborators -->
+        <div class="float-divs-diff-heights col-md-4">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                    </div>
+                    <h4 class="panel-title">Use Case Collaborators</h4>
+                </div>
+                <div class="panel-body">
+                    <label class="control-label">Collaborators</label>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr *ngFor="let usecaseCollaborator of usecaseCollaborators">
+                                <td align="left"><i class="fa fa-user"></i></td>
+                                <td width="70%;" class="font-red">{{ usecaseCollaborator.email }}</td>
+                                <td align="right">&nbsp;<i class="fa fa-trash-o"></i></td>
+                            </tr>
+                        </table>
+                        <hr/>
+                    </div>
+                    <label class="control-label">Invite Others to Collaborate</label>
+                    <input type="text" class="form-control" placeholder="Enter Email Addresses separate by semi-colon" formControlName="inviteOthersToCollaborate" />
+                    <label class="control-label">Invite Note</label>
+                    <textarea class="form-control" placeholder="Invite Note" rows="7" formControlName="inviteNote" ></textarea>
+                    <div>&nbsp;</div>
+                    <div class="panel-footer-duplicate text-right">
+                        <button id="btnSendInviteNote" (click)="sendInviteNote()" type="button" class="btn btn-success m-r-5 m-b-5">Send</button>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+        <!-- end col-4 -->
+
+        <!-- begin col-8 Basic Info -->
+        <div class="float-divs-diff-heights col-md-8">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                    </div>
+                    <h4 class="panel-title">Basic Information</h4>
+                </div>
+                <div class="panel-body">
+                    
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Template</label>
+                            <div class="col-md-9">
+                                <select class="form-control" formControlName="usecaseTemplate" >
+                                    <option *ngFor="let usecaseTemplate of usecaseTemplates" [value]="usecaseTemplate" >{{ usecaseTemplate }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Tenant</label>
+                            <div class="col-md-9">
+                                <select class="form-control" formControlName="usecaseTenant" >
+                                    <option *ngFor="let usecaseTenant of usecaseTenants" [value]="usecaseTenant">{{ usecaseTenant }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Use Case Name</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" placeholder="Use Case Name" formControlName="usecaseName" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Use Case Type</label>
+                            <div class="col-md-9">
+                                <select class="form-control" formControlName="usecaseType" >
+                                    <option *ngFor="let usecaseType of usecaseTypes" [value]="usecaseType">{{ usecaseType }}</option>
+                                </select>
+                                <div class="panel-footer text-right">
+                                    <button type="button" class="btn btn-link m-b-5 f-s-9">Add New Use Case Type</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Description</label>
+                            <div class="col-md-9">
+                                <textarea class="form-control" placeholder="Description" rows="5" formControlName="description" ></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Industry</label>
+                            <div class="col-md-9">
+                                <select class="form-control" formControlName="industry" >
+                                    <option *ngFor="let industry of industries" [value]="industry">{{ industry }}</option>
+                                </select>
+                                <div class="panel-footer text-right">
+                                    <button type="button" class="btn btn-link m-b-5 f-s-9">Add New Industry</button>
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+        <!-- end col-8 -->
+
+        <!-- begin col-4 General Info -->
+        <div class="float-divs-diff-heights col-md-4">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                    </div>
+                    <h4 class="panel-title">General Information</h4>
+                </div>
+                <div class="panel-body">
+                    <label class="control-label">Use Case Icon</label>
+                    <div class="table-responsive">
+                        <table>
+                            <tr>
+                                <td align="left">
+                                    <select class="form-control" formControlName="usecaseIcon" >
+                                        <option *ngFor="let usecaseIcon of usecaseIcons" [value]="usecaseIcon">{{ usecaseIcon }}</option>
+                                    </select>
+                                </td>
+                                <td align="right">&nbsp;
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="panel-footer-duplicate text-right">
+                            <button id="btnUploadIcon" (click)="uploadUsecaseIcon()" type="button" class="btn btn-success m-r-5 m-b-5">Upload</button>
+                        </div>
+                    </div>
+
+                    <label class="control-label">Use Case Documents</label>
+                    <div class="table-responsive">
+                        <table>
+                            <tr *ngFor="let usecaseDocument of usecaseDocuments">
+                                <td align="left"><i class="fa fa-file-photo-o"></i></td>
+                                <td width="80%;" class="font-red"><a href="{{ usecaseDocument.path }}/{{ usecaseDocument.filename }}">{{ usecaseDocument.filename }}</a></td>
+                                <td align="right">&nbsp;<i class="fa fa-trash-o"></i></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+
+        <!-- begin col-8 User Info -->
+        <div class="float-divs-diff-heights col-md-8">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                    </div>
+                    <h4 class="panel-title">User Info</h4>
+                </div>
+                <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">User Hierarchy</label>
+                            <div class="col-md-9">
+                                <textarea class="form-control" placeholder="Description" rows="7" formControlName="userHierarchy" >What will be the different user hierarchy in this use case? Department specification Different Roles used in this use case? Different different responsibility of each each Role?</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Change Role Functionality</label>
+                            <div class="col-md-9">
+                                <textarea class="form-control" placeholder="Description" rows="7" formControlName="changeRoleFunctionality" >If Change Role functionality, please describe the required behaviour regarding configurations etc. </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">User Unsubscribe</label>
+                            <div class="col-md-9">
+                                <textarea class="form-control" placeholder="Description" rows="7" formControlName="userUnsubscribe" >Is there any restriction on role of a user in a group of users? i.e. in one group there will be only one user having a master role etc. If yes, what will happen if this is leaving this group?  Suppose, as an example a new user is registered in the Smart Fan or Smart Socket  use case. He is added as master.  Now this user (Master) would be able to invite users (add users) with role as Admin or Slave. Admin user will be able to Add /Delete devices. Can not add/invite users.  Slave user will be able to control the devices only. Can not add devices.  Invited user will registered himself and will get the same role as per role given by master during invitation.</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Will Use Case Have User Invite Feature?</label>
+                            <div class="col-md-9">
+                                <input type="checkbox" formControlName="isUserInviteFeatureIncluded" />
+                            </div>
+                        </div>
+                        
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+
+    </div>
+        
+    <!-- begin row Use Case Devices -->
+    <div class="row "> 
+        <!-- begin panel -->
+        <div class="panel panel-inverse" data-sortable-id="ui-general-3">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Use Case Devices</h4>
+            </div>
+            <div class="panel-body">
+                <button (click)="addNewDevice()" type="button" class="btn btn-danger m-r-5 m-b-5">Add</button>
+                <button (click)="importDevice()" type="button" class="btn btn-success m-r-5 m-b-5">Import</button>
+                <table id="data-table" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Devices</th>
+                            <th>Device Types</th>
+                            <th>Device Models</th>
+                            <th>Sensors or Device</th>
+                            <th>Number of Devices</th>
+                            <th>Location</th>
+                            <th>Device Data Frequency</th>
+                            <th>Device Packet Size</th>
+                            <th>Data Format</th>
+                            <th>Data Interface</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="odd gradeX" *ngFor="let device of devices">
+                            <td>{{ device.device_name }}</td>
+                            <td class="font-red">{{ device.device_type }}</td>
+                            <td class="font-red">{{ device.device_model }}</td>
+                            <td>{{ device.sensors_per_device }}</td>
+                            <td>{{ device.number_of_devices }}</td>
+                            <td>{{ device.location }}</td>
+                            <td>{{ device.device_tag_frequency.value }} {{ device.device_tag_frequency.unit }}</td>
+                            <td>{{ device.device_packet_size.value }} {{ device.device_packet_size.unit }}</td>
+                            <td>{{ device.data_format }}</td>
+                            <td>{{ device.data_interface }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end row Use Case Devices -->
+
+    <!-- begin row `Cancel` and `Save` buttons -->
+    <div class="row "> 
+        <div class="col-md-6">
+            <button (click)="saveAsTemplate()" type="button" class="btn btn-success m-r-5 m-b-5">Save as Template</button>
+        </div>
+        <div class="col-md-6">
+            <ol class="breadcrumb pull-right">
+                <li><button (click)="publishNewUsecase()" type="button" class="btn btn-success m-r-5 m-b-5">Publish</button></li>
+                <li><button (click)="cancelNewUsecase()" type="button" class="btn btn-default m-r-5 m-b-5">Cancel</button></li>
+                <li><button (click)="saveNewUsecase()" type="button" class="btn btn-danger m-r-5 m-b-5">Save</button></li>
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+            </ol>        
+        </div>
+    </div>
+    <!-- end row `Cancel` and `Save` buttons -->
+
+</form>
+
+<!--
+
+<p><textarea class="form-control" placeholder="jsonBody" rows="7" >{{ jsonBody }}</textarea></p>
+
+
+<p>Form value: {{ usecaseNewForm.value | json }}</p>
+<p>Form status: {{ usecaseNewForm.status | json }}</p>
+
+-->

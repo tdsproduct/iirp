@@ -1,0 +1,110 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn add @type/node
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/MacGPG2/bin:/usr/local/bin
+
+Yarn version: 
+  0.27.5
+
+Node version: 
+  8.1.3
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "iotworldlabs-admin-web",
+    "description": "D4DT - AdminWeb",
+    "version": "3.0.0",
+    "license": "MIT",
+    "scripts": {
+      "ng": "ng",
+      "start": "ng serve --host 0.0.0.0",
+      "test": "ng test",
+      "lint": "ng lint",
+      "e2e": "ng e2e",
+      "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail"
+    },
+    "private": true,
+    "dependencies": {
+      "@angular/animations": "^4.0.0",
+      "@angular/common": "^4.0.0",
+      "@angular/compiler": "^4.0.0",
+      "@angular/core": "^4.0.0",
+      "@angular/forms": "^4.0.0",
+      "@angular/http": "^4.0.0",
+      "@angular/platform-browser": "^4.0.0",
+      "@angular/platform-browser-dynamic": "^4.0.0",
+      "@angular/router": "^4.0.0",
+      "angular2-highcharts": "^0.5.5",
+      "core-js": "^2.4.1",
+      "highcharts": "^5.0.14",
+      "rxjs": "^5.1.0",
+      "yarn": "^0.27.5",
+      "zone.js": "^0.8.4"
+    },
+    "devDependencies": {
+      "@angular/cli": "1.1.2",
+      "@angular/compiler-cli": "^4.0.0",
+      "@angular/language-service": "^4.0.0",
+      "@types/jasmine": "2.5.45",
+      "@types/node": "^6.0.88",
+      "angular2-template-loader": "^0.6.0",
+      "awesome-typescript-loader": "^3.0.4",
+      "codelyzer": "~3.0.1",
+      "css-loader": "^0.26.1",
+      "extract-text-webpack-plugin": "2.0.0-beta.5",
+      "file-loader": "^0.9.0",
+      "html-loader": "^0.4.3",
+      "html-webpack-plugin": "^2.16.1",
+      "jasmine-core": "~2.6.2",
+      "jasmine-spec-reporter": "~4.1.0",
+      "karma": "~1.7.0",
+      "karma-chrome-launcher": "~2.1.1",
+      "karma-cli": "~1.0.1",
+      "karma-coverage-istanbul-reporter": "^1.2.1",
+      "karma-jasmine": "~1.1.0",
+      "karma-jasmine-html-reporter": "^0.2.2",
+      "karma-webpack": "^2.0.1",
+      "null-loader": "^0.1.1",
+      "protractor": "~5.1.2",
+      "raw-loader": "^0.5.1",
+      "rimraf": "^2.5.2",
+      "style-loader": "^0.13.1",
+      "ts-node": "~3.0.4",
+      "tslint": "~5.3.2",
+      "typescript": "~2.3.3",
+      "webpack": "2.2.1",
+      "webpack-dev-server": "2.4.1",
+      "webpack-merge": "^3.0.0"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/iotworldlabs/iotworldlabs-admin-web.git"
+    },
+    "bugs": {
+      "url": "https://github.com/iotworldlabs/iotworldlabs-admin-web/issues"
+    },
+    "homepage": "https://github.com/iotworldlabs/iotworldlabs-admin-web#readme"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@type%2fnode: Not found
+      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/util/request-manager.js:326:18)
+      at Request.self.callback (/usr/local/lib/node_modules/yarn/node_modules/request/request.js:188:22)
+      at emitTwo (events.js:125:13)
+      at Request.emit (events.js:213:7)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/node_modules/request/request.js:1171:10)
+      at emitOne (events.js:115:13)
+      at Request.emit (events.js:210:7)
+      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/node_modules/request/request.js:1091:12)
+      at Object.onceWrapper (events.js:314:30)
+      at emitNone (events.js:110:20)
